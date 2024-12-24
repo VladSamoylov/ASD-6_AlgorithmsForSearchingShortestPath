@@ -50,12 +50,23 @@ public:
 	bool operator==(const variant<T, int>& other) const { return this->vertex == other; }
 };
 
+/**
+ * @brief Метод додавання суміжної вершини
+ * @tparam T Заповнювач типу даних
+ * @param vertex Назва суміжної вершини
+ * @param weight Вага суміжної вершини
+ */
 template <typename T>
 void Vertex<T>::AddNeighbor(const variant<T, int>& vertex, const int& weight) {
 
 	this->vertNeighbors.emplace_back(vertex, weight);
 }
 
+/**
+ * @brief Метод зміни назв суміжних вершин
+ * @tparam T Заповнювач типу даних
+ * @param newName Нові ім'я суміжних вершин
+ */
 template <typename T>
 void Vertex<T>::SetNameNeighbor(const vector<variant<T, int>>& newName) {
 
@@ -66,6 +77,10 @@ void Vertex<T>::SetNameNeighbor(const vector<variant<T, int>>& newName) {
 	}
 }
 
+/**
+ * @brief Метод виведення суміжних вершин
+ * @tparam T Заповнювач типу даних
+ */
 template <typename T>
 void Vertex<T>::ShowNeighbor() {
 
@@ -78,6 +93,11 @@ void Vertex<T>::ShowNeighbor() {
 	}cout << endl;
 }
 
+/**
+ * @brief Метод отримання списку суміжних вершин
+ * @tparam T Заповнювач типу даних
+ * @return Список суміжних вершин
+ */
 template <typename T>
 vector<variant<T, int>> Vertex<T>::GetNeighbors() {
 
@@ -88,6 +108,12 @@ vector<variant<T, int>> Vertex<T>::GetNeighbors() {
 	return neighbour;
 }
 
+/**
+ * @brief Метод отримання ваги суміжної вершини
+ * @tparam T Заповнювач типу даних
+ * @param vertex Суміжня вершина
+ * @return Вага суміжньої вершини
+ */
 template <typename T>
 int Vertex<T>::GetNeighborWeight(const variant<T, int>& vertex) {
 
@@ -120,6 +146,11 @@ public:
 	void SolveTaskSecondThird(const variant<T, int>&, const variant<T, int>&);
 };
 
+/**
+ * @brief Метод додавання вершини
+ * @tparam T Заповнювач типу даних
+ * @param vertex Ім'я вершини
+ */
 template <typename T>
 void Graph<T>::AddVertex(const variant<T, int>& vertex) {
 
@@ -129,6 +160,13 @@ void Graph<T>::AddVertex(const variant<T, int>& vertex) {
 	this->vertexN++;
 }
 
+/**
+ * @brief Метод перевірки існування ребра графа
+ * @tparam T Заповнювач типу даних
+ * @param fVert Перша вершина
+ * @param sVert Друга вершина
+ * @return True ребро існує, інакше - false
+ */
 template <typename T>
 bool Graph<T>::isPresentEdge(const variant<T, int>& fVert, const variant<T, int>& sVert) {
 
@@ -142,6 +180,10 @@ bool Graph<T>::isPresentEdge(const variant<T, int>& fVert, const variant<T, int>
 	return false;
 }
 
+/**
+ * @brief Метод відображення списку суміжності
+ * @tparam T Заповнювач типу даних
+ */
 template <typename T>
 void Graph<T>::ShowVertexes() {
 
@@ -154,6 +196,13 @@ void Graph<T>::ShowVertexes() {
 	}cout << endl;
 }
 
+/**
+ * @brief Метод додавання ребра графа
+ * @tparam T Заповнювач типу даних
+ * @param fVertex Перша вершина
+ * @param sVertex Друга вершина
+ * @param weight Вага ребра
+ */
 template <typename T>
 void Graph<T>::AddEdge(const variant<T, int>& fVertex, const variant<T, int>& sVertex, const int& weight) {
 
@@ -173,6 +222,12 @@ void Graph<T>::AddEdge(const variant<T, int>& fVertex, const variant<T, int>& sV
 	}
 }
 
+/**
+ * @brief Метод, який будує шлях між двома вершинами 
+ * @tparam T Заповнювач типу даних
+ * @param sVertex Вершина, що є початком шляху
+ * @param eVertex Вершина, що є кінцем шляху
+ */
 template <typename T>
 void Graph<T>::ConstructWay(const variant<T, int>& sVertex, const variant<T, int>& eVertex) {
 	
@@ -208,6 +263,12 @@ void Graph<T>::ConstructWay(const variant<T, int>& sVertex, const variant<T, int
 
 }
 
+/**
+ * @brief Метод, який реалізує алгоритм Беллмана-Форда для графів
+ * @tparam T Заповнювач типу даних
+ * @param sVertex Початкова вершина
+ * @param eVertex Кінцева вершина
+ */
 template <typename T>
 void Graph<T>::BellmanFord(const variant<T, int>& sVertex, const variant<T, int>& eVertex) {
 
@@ -257,6 +318,11 @@ void Graph<T>::BellmanFord(const variant<T, int>& sVertex, const variant<T, int>
 	this->ConstructWay(sVertex, eVertex);
 }
 
+/**
+ * @brief Метод, який реалізує алгоритм Беллмана-Форда для пошуку розв'язку системи різнецевих обмежень
+ * @tparam T Заповнювач типу даних
+ * @param sVertex Початкова вершина
+ */
 template <typename T>
 void Graph<T>::BellmanFord(const variant<T, int>& sVertex) {
 
@@ -306,6 +372,12 @@ void Graph<T>::BellmanFord(const variant<T, int>& sVertex) {
 	}
 }
 
+/**
+ * @brief Метод, який реалізує алгоритм Дейкстри
+ * @tparam T Заповнювач типу даних
+ * @param sVertex Початкова вершина
+ * @param eVertex Кінцева вершина
+ */
 template <typename T>
 void Graph<T>::DijkstraAlgorithm(const variant<T, int>& sVertex, const variant<T, int>& eVertex) {
 
@@ -361,6 +433,12 @@ void Graph<T>::DijkstraAlgorithm(const variant<T, int>& sVertex, const variant<T
 	this->ConstructWay(sVertex, eVertex);
 }
 
+/**
+ * @brief Метод який виводить до консолі матрицю найкоротших шляхів або матрицю попередників
+ * @tparam T Заповнювач типу даних
+ * @param matrix Матриця найкоротших шляхів або матриця попередників
+ * @param vertexNames Допоміжний словник, який містить в собі реальні назки вершин
+ */
 template <typename T>
 void Graph<T>::ShowMatrixFloyd(const vector<vector<int>>& matrix, unordered_map<int, variant<T, int>>& vertexNames) {
 	cout << setw(5) << left << "_";
@@ -378,6 +456,12 @@ void Graph<T>::ShowMatrixFloyd(const vector<vector<int>>& matrix, unordered_map<
 	cout << endl;
 }
 
+/**
+ * @brief Метод, який реалізує алгоритм Флойда-Уоршелла
+ * @tparam T Заповнювач типу даних
+ * @param sVertex Початкова вершина
+ * @param eVertex Кінцева вершина
+ */
 template <typename T>
 void Graph<T>::FloydWarshell(const variant<T, int>& sVertex, const variant<T, int>& eVertex) {
 
@@ -452,6 +536,12 @@ void Graph<T>::FloydWarshell(const variant<T, int>& sVertex, const variant<T, in
 
 }
 
+/**
+ * @brief Метод, який реалізує розв'язок заданої системи різницевих обмежень
+ * @tparam T Заповнювач типу даних
+ * @param n Кількість невідомих
+ * @param m Кількість рівнянь
+ */
 template <typename T>
 void Graph<T>::SolveDifferentialConstraintS(const int& n, const int& m) {
 
@@ -471,6 +561,12 @@ void Graph<T>::SolveDifferentialConstraintS(const int& n, const int& m) {
 	}
 }
 
+/**
+ * @brief Метод, який реалізує розв'язок завдань 2-Б і 3-Б вар 17
+ * @tparam T Заповнювач типу даних
+ * @param sNode Початковий вузол
+ * @param eNode Кінцевий вузол
+ */
 template <typename T>
 void Graph<T>::SolveTaskSecondThird(const variant<T, int>& sNode, const variant<T, int>& eNode) {
 
@@ -489,79 +585,208 @@ void Graph<T>::SolveTaskSecondThird(const variant<T, int>& sNode, const variant<
 
 int main() {
 
-	Graph<string> g(false);
-	g.AddEdge(1, 2, 1);
-	g.AddEdge(1, 3, 2);
-	g.AddEdge(1, 4, 4);
-	g.AddEdge(2, 5, 3);
-	g.AddEdge(2, 7, 2);
-	g.AddEdge(3, 5, 7);
-	g.AddEdge(3, 6, 6);
-	g.AddEdge(4, 6, 2);
-	g.AddEdge(4, 7, 3);
-	g.AddEdge(5, 8, 7);
-	g.AddEdge(5, 9, 5);
-	g.AddEdge(6, 8, 7);
-	g.AddEdge(6, 10, 3);
-	g.AddEdge(7, 9, 5);
-	g.AddEdge(7, 10, 4);
-	g.AddEdge(8, 11, 4);
-	g.AddEdge(9, 11, 1);
-	g.AddEdge(10, 11, 4);
-
-	Graph<string> g2(true);
-	g2.AddEdge(1, 2, 2);
-	g2.AddEdge(1, 3, 7);
-	g2.AddEdge(1, 4, 12);
-	g2.AddEdge(2, 3, 1);
-	g2.AddEdge(2, 5, 7);
-	g2.AddEdge(3, 5, 1);
-	g2.AddEdge(3, 6, 14);
-	g2.AddEdge(4, 3, 3);
-	g2.AddEdge(4, 6, 2);
-	g2.AddEdge(5, 4, 2);
-	g2.AddEdge(5, 6, 11);
-
-
-	int n = 5, m = 5;
+	Graph<string> g(false);	
+	Graph<string> g2(true);	
 	Graph<string> gF(true);
-	gF.AddEdge("x1", "x5", 0);
-	gF.AddEdge("x2", "x1", 2);
-	gF.AddEdge("x3", "x2", -1);
-	gF.AddEdge("x4", "x3", 3);
-	gF.AddEdge("x5", "x4", 1);
-
 	Graph<string> gS(false);
-	gS.AddEdge("PC-1", "PC-2", 30);
-	gS.AddEdge("PC-1", "PC-3", 30);
-	gS.AddEdge("PC-2", "R-1", 25);
-	gS.AddEdge("PC-3", "R-1", 25);
-	gS.AddEdge("D-1", "R-1", 45);
-	gS.AddEdge("D-1", "PC-2", 45);
-	gS.AddEdge("D-1", "D-2", 60);
-	gS.AddEdge("D-2", "R-1", 45);
-	gS.AddEdge("D-2", "PC-3", 45);
-	gS.AddEdge("D-2", "PC-A", 45);
-	gS.AddEdge("R-1", "R-2", 10);
-	gS.AddEdge("PC-A", "R-2", 25);
-	gS.AddEdge("R-2", "S-1", 15);
-	gS.AddEdge("R-2", "S-2", 40);
-	gS.AddEdge("S-1", "S-2", 5);
 
-	try {
-		//g.ShowVertexes();
-		//g.BellmanFord(1, 11);
-		//g.DijkstraAlgorithm(1, 11);
-		//g.FloydWarshell(1, 11);
-		//g2.ShowVertexes();
-		//g2.BellmanFord(1, 6);
-		//g2.DijkstraAlgorithm(1, 6);
-		//g2.FloydWarshell(1, 6);
-		//gF.SolveDifferentialConstraintS(n, m);
-		gS.SolveTaskSecondThird("PC-1", "S-2");
-	}
-	catch (const char* err) {
-		cerr << ANSI_COLOR_RED << err << ANSI_COLOR_RESET << endl;
+	srand(time(0));
+	int task = 99, ltask = 99, vtask = 99;
+	bool isOrinted = true;
+
+	while (task != 0) {
+		switch (task) {
+		case 1:
+			while (ltask != 0) {
+				switch (ltask) {
+				case 1:
+					g.ClearDataGraph();
+					isOrinted = true;
+					g2.AddEdge(1, 2, 2);
+					g2.AddEdge(1, 3, 7);
+					g2.AddEdge(1, 4, 12);
+					g2.AddEdge(2, 3, 1);
+					g2.AddEdge(2, 5, 7);
+					g2.AddEdge(3, 5, 1);
+					g2.AddEdge(3, 6, 14);
+					g2.AddEdge(4, 3, 3);
+					g2.AddEdge(4, 6, 2);
+					g2.AddEdge(5, 4, 2);
+					g2.AddEdge(5, 6, 11);
+					break;
+				case 2:
+					g2.ClearDataGraph();
+					isOrinted = false;
+					g.AddEdge(1, 2, 1);
+					g.AddEdge(1, 3, 2);
+					g.AddEdge(1, 4, 4);
+					g.AddEdge(2, 5, 3);
+					g.AddEdge(2, 7, 2);
+					g.AddEdge(3, 5, 7);
+					g.AddEdge(3, 6, 6);
+					g.AddEdge(4, 6, 2);
+					g.AddEdge(4, 7, 3);
+					g.AddEdge(5, 8, 7);
+					g.AddEdge(5, 9, 5);
+					g.AddEdge(6, 8, 7);
+					g.AddEdge(6, 10, 3);
+					g.AddEdge(7, 9, 5);
+					g.AddEdge(7, 10, 4);
+					g.AddEdge(8, 11, 4);
+					g.AddEdge(9, 11, 1);
+					g.AddEdge(10, 11, 4);
+					break;
+				case 3:
+					g.ClearDataGraph();
+					g2.ClearDataGraph();
+					break;
+				case 4:
+					if (isOrinted) g2.ShowVertexes();
+					else g.ShowVertexes();
+					break;
+				case 5:
+					try {
+						if (isOrinted) g2.BellmanFord(1, 6);
+						else g.BellmanFord(1, 11);
+					}
+					catch (const char* err) {
+						cerr << ANSI_COLOR_RED << err << ANSI_COLOR_RESET << endl;
+					}
+					break;
+				case 6:
+					try {
+						if (isOrinted) g2.DijkstraAlgorithm(1, 6);
+						else g.DijkstraAlgorithm(1, 11);
+					}
+					catch (const char* err) {
+						cerr << ANSI_COLOR_RED << err << ANSI_COLOR_RESET << endl;
+					}
+					break;
+				case 7:
+					try {
+						if (isOrinted) g2.FloydWarshell(1, 6);
+						else g.FloydWarshell(1, 11);
+					}
+					catch (const char* err) {
+						cerr << ANSI_COLOR_RED << err << ANSI_COLOR_RESET << endl;
+					}
+					break;
+				}
+				cout << "\n________Work with Graph________" << endl;
+				cout << setw(35) << left << "Build and shoose orinted graph" << " / Enter - 1" << endl;
+				cout << setw(35) << left << "Build and shoose non-orinted graph " << " / Enter - 2" << endl;
+				cout << setw(35) << left << "Clear graph " << " / Enter - 3" << endl;
+				cout << setw(35) << left << "Show Graph " << " / Enter - 4" << endl;
+				cout << setw(35) << left << "Launch Bellman-Ford" << " / Enter - 5" << endl;
+				cout << setw(35) << left << "Launch Dijkstra Algorithm" << " / Enter - 6" << endl;
+				cout << setw(35) << left << "Launch Floyd-Warshell" << " / Enter - 7" << endl;
+				cout << setw(35) << left << "Back " << " / Enter - 0" << endl;
+				if (ltask != 0) {
+					try {
+						cout << "\nChoose the Task: ";
+						cin >> ltask;
+						if (cin.fail()) {
+							cin.clear();
+							cin.ignore(numeric_limits<streamsize>::max(), '\n');
+							throw "Error: <Incorrect Input Data>";
+						}
+					}
+					catch (const char* err) {
+						cerr << endl << err << endl;
+						ltask = 99;
+					}
+				}
+			}
+			break;
+		case 2:
+			while (vtask != 0) {
+				switch (vtask) {
+				case 1:
+					try {
+						int n = 5, m = 5;
+						gF.ClearDataGraph();
+						gF.AddEdge("x1", "x5", 0);
+						gF.AddEdge("x2", "x1", 2);
+						gF.AddEdge("x3", "x2", -1);
+						gF.AddEdge("x4", "x3", 3);
+						gF.AddEdge("x5", "x4", 1);
+						gF.SolveDifferentialConstraintS(n, m);
+					}
+					catch (const char* err) {
+						cerr << ANSI_COLOR_RED << err << ANSI_COLOR_RESET << endl;
+					}
+					break;
+				case 2:
+					try {
+						gS.ClearDataGraph();
+						gS.AddEdge("PC-1", "PC-2", 30);
+						gS.AddEdge("PC-1", "PC-3", 30);
+						gS.AddEdge("PC-2", "R-1", 25);
+						gS.AddEdge("PC-3", "R-1", 25);
+						gS.AddEdge("D-1", "R-1", 45);
+						gS.AddEdge("D-1", "PC-2", 45);
+						gS.AddEdge("D-1", "D-2", 60);
+						gS.AddEdge("D-2", "R-1", 45);
+						gS.AddEdge("D-2", "PC-3", 45);
+						gS.AddEdge("D-2", "PC-A", 45);
+						gS.AddEdge("R-1", "R-2", 10);
+						gS.AddEdge("PC-A", "R-2", 25);
+						gS.AddEdge("R-2", "S-1", 15);
+						gS.AddEdge("R-2", "S-2", 40);
+						gS.AddEdge("S-1", "S-2", 5);
+						gS.SolveTaskSecondThird("PC-1", "S-2");
+					}
+					catch (const char* err) {
+						cerr << ANSI_COLOR_RED << err << ANSI_COLOR_RESET << endl;
+					}
+					break;
+				}
+				cout << "\n________Work with Lab Task var 17________" << endl;
+				cout << setw(45) << left << "Solve differential constraint system" << " / Enter - 1" << endl;
+				cout << setw(45) << left << "Determine the best path in Computer Network " << " / Enter - 2" << endl;
+				cout << setw(45) << left << "Back " << " / Enter - 0" << endl;
+				if (vtask != 0) {
+					try {
+						cout << "\nChoose the Task: ";
+						cin >> vtask;
+						if (cin.fail()) {
+							cin.clear();
+							cin.ignore(numeric_limits<streamsize>::max(), '\n');
+							throw "Error: <Incorrect Input Data>";
+						}
+					}
+					catch (const char* err) {
+						cerr << endl << err << endl;
+						vtask = 99;
+					}
+				}
+			}
+			break;
+		case 0:
+			break;
+		}
+		cout << "\n________________Menu of action________________" << endl;
+		cout << setw(35) << left << "Work with graph " << " / Enter - 1" << endl;
+		cout << setw(35) << left << "Work with Lab Task var 17  " << " / Enter - 2" << endl;
+		cout << setw(35) << left << "Exit " << " / Enter - 0" << endl;
+
+		if (task != 0) {
+			ltask = 99;
+			vtask = 99;
+			try {
+				cout << "\nChoose the Task: ";
+				cin >> task;
+				if (cin.fail()) {
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+					throw "Error: <Incorrect Input Data>";
+				}
+			}
+			catch (const char* err) {
+				cerr << endl << err << endl;
+				task = 99;
+			}
+		}
 	}
 
 	return 0;
